@@ -44,7 +44,7 @@ public class UserEntity {
 	
 	@JsonIgnore
 	@NotNull
-	@Size(min = 6, max = 25, message = "Password must have between {min} and {max} characters.")
+	@Size(min = 6, max = 65, message = "Password must have between {min} and {max} characters.")
 	private String password;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)

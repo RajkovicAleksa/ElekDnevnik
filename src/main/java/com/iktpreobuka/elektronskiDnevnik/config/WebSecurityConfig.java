@@ -10,8 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Value("${spring.security.secret-key}")
@@ -21,7 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 		.addFilterAfter(new JWTAuthorizationFilter(secretKey), UsernamePasswordAuthenticationFilter.class)
-		.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll()
-		.anyRequest().authenticated();
+		.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll();
+		//.anyRequest().authenticated();
+
 	}
 }

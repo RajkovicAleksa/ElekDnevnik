@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 @Entity
 @Table(name = "subjects")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -81,7 +82,10 @@ public class SubjectEntity {
 	}
 
 	public boolean isActive() {
-		return isActive;
+		if (isActive == null) {
+			return false;
+		}
+		return isActive.booleanValue();
 	}
 
 	public void setActive(boolean isActive) {
